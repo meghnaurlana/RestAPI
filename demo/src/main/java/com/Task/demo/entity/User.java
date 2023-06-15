@@ -1,16 +1,19 @@
 package com.Task.demo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userdetails")
 @Data
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-
-    @Column(name = "id")
+    @Id
+    @GeneratedValue
     private int id;
 
     @Column(name = "name")
@@ -19,12 +22,8 @@ public class User {
     @Column(name = "salary")
     private float salary;
 
-    public User() {
-    }
+    @Column(name = "address")
+    private String address;
 
-    public User(int id, String name, float salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-    }
+
 }
