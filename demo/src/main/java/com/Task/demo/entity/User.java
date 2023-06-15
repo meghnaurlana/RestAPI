@@ -12,8 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @Id
-    @GeneratedValue
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
