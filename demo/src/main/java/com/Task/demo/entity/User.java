@@ -1,18 +1,20 @@
 package com.Task.demo.entity;
 
+
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @Entity
-@Table(name = "userdetails")
+@Table(name = "user_info")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
-    @Column(name = "id")
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "name")

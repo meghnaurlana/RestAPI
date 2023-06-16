@@ -9,18 +9,16 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    private UserRepo userRepo;
+private UserRepo userRepo;
+    public User saveUser(User user){
+       return userRepo.save(user);
 
-//    public UserService(UserRepo userRepo) {
-//        this.userRepo = userRepo;
-//    }
-//
-//    public User saveUser(User user){
-//     return userRepo.save(user);
-//    }
-
-    public User getUser(Integer id){
-        return userRepo.findAll(id);
     }
-
+    public List<User> getUser (){
+        return userRepo.findAll();
+    }
+    public String delUser(){
+         userRepo.deleteAll();
+         return "deleted";
+    }
 }

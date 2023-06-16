@@ -1,36 +1,30 @@
 package com.Task.demo.controller;
 
+import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.entity.User;
 import com.Task.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 public class UserController {
     @Autowired
-    private UserService service;
+    UserService userService;
 
-    public UserController(UserService service) {
-        this.service = service;
+
+    @PostMapping("/users")
+public User addUser(@RequestBody User user){
+        return userService.saveUser(user);
     }
 
-//    @PostMapping("/addUser")
-//    public User adduser(@RequestBody User user){
-//        return service.saveUser(user);
-//    }
-//    public List<User> adduser(@RequestBody List <User> users){
-//        return service.saveUsers(users);
-//    }
-
-    @GetMapping("/user")
-//    public List<User> findAllUser(){
-//        return service.getUser();
-//}
-    public User findAllUser(@PathVariable("id") Integer id)
-    {
-
-        return service.getUser(id);
+    @GetMapping("/getusers")
+    public List<User> findUser(){
+        return userService.getUser();
     }
 }
+

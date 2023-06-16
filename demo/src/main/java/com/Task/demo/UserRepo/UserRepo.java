@@ -9,6 +9,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer> {
-    @Query("SELECT * FROM userdetails WHERE id=:id")
-    User findAll(@Param("id") Integer id);
+
 }
