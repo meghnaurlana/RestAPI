@@ -28,20 +28,8 @@ public class UserService {
         return userRepo.findById(id).orElse(null);
     }
 
-    public User getUserByName(String name) {
-        return userRepo.findByName(name);
-    }
-
-    public User updateUser(User user){
-        User existinguser = userRepo.findById(user.getId()).orElse(null);
-        existinguser.setId(user.getId());
-        existinguser.setName(user.getName());
-        existinguser.setSalary(user.getSalary());
-        existinguser.setAddress(user.getAddress());
-        return userRepo.save(existinguser);
-    }
     public String deleteUser(int id) {
-         userRepo.deleteById(id);
-         return "User is deleted " + id;
+        userRepo.deleteById(id);
+        return "User is deleted " + id;
     }
 }

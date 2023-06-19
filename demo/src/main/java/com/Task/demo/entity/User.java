@@ -1,4 +1,5 @@
 package com.Task.demo.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,17 +11,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-   @Id
+    @Column(name = "userId")
+    private int userId;
+
+    @Id
     private int id;
 
-    @Column(name = "name")
-    private String name;
 
-    @Column(name = "salary")
-    private float salary;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "body")
+    private String body;
 
 
 }
