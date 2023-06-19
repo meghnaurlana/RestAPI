@@ -1,7 +1,4 @@
 package com.Task.demo.entity;
-
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "name")

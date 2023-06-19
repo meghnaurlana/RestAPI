@@ -1,13 +1,9 @@
 package com.Task.demo.controller;
 
-import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.entity.User;
 import com.Task.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,14 +13,43 @@ public class UserController {
     UserService userService;
 
 
-    @PostMapping("/users")
-public User addUser(@RequestBody User user){
+    @PostMapping("/user")
+    public User addUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
 
-    @GetMapping("/getusers")
-    public List<User> findUser(){
+    @PostMapping("/Users")
+    public List<User> addUsers(@RequestBody List<User> user) {
+        return userService.saveUsers(user);
+    }
+
+    @GetMapping("/getUsers")
+    public List<User> findUser() {
         return userService.getUser();
     }
+
+    @GetMapping("/getUser/{id}")
+    public User addUserById(@PathVariable int id) {
+        return userService.getUserById(id);
+    }
+
+    @GetMapping("/getUserByName/{name}")
+    public User addUserByName(@PathVariable String name) {
+        return userService.getUserByName(name);
+    }
+
+    @PutMapping("/updateUser")
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteByID(@PathVariable int id) {
+        return userService.deleteUser(id);
+    }
+
+
 }
+
 
