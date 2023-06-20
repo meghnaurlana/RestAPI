@@ -28,6 +28,16 @@ public class UserService {
         return userRepo.findById(id).orElse(null);
     }
 
+    public User updateUser(User user){
+        User existingUser = userRepo.findById(user.getId()).orElse(null);
+        existingUser.setUserId(user.getUserId());
+        existingUser.setId(user.getId());
+        existingUser.setTitle(user.getTitle());
+        existingUser.setBody(user.getBody());
+        return userRepo.save(existingUser);
+    }
+
+
     public String deleteUser(int id) {
         userRepo.deleteById(id);
         return "User is deleted " + id;

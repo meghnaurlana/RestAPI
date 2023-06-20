@@ -17,7 +17,6 @@ public class User {
     @Id
     private int id;
 
-
     @Column(name = "title")
     private String title;
 

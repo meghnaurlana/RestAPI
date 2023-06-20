@@ -12,7 +12,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
     @PostMapping("/user")
     public User addUser(@RequestBody User user) {
         return userService.saveUser(user);
@@ -31,6 +30,11 @@ public class UserController {
     @GetMapping("/posts/{id}")
     public User addUserById(@PathVariable int id) {
         return userService.getUserById(id);
+    }
+
+    @PutMapping("/update")
+    public User update(@RequestBody User user){
+        return userService.updateUser(user);
     }
 
     @DeleteMapping("/posts/{id}")
