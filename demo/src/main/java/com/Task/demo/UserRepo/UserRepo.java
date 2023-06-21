@@ -12,4 +12,9 @@ import java.util.Optional;
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer> {
 
+    User findByUserId(Integer userId);
+
+    User findByTitle(String title);
+
+    List<User> findAllByUserId(Integer userId);
 }

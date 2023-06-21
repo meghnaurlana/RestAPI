@@ -4,7 +4,6 @@ import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -28,6 +27,14 @@ public class UserService {
         return userRepo.findById(id).orElse(null);
     }
 
+    public List <User> getUserByUserId(int userId) {
+        return userRepo.findAllByUserId(userId);
+    }
+
+    public User getUserByTitle(String title){
+        return userRepo.findByTitle(title);
+    }
+
     public User updateUser(User user){
         User existingUser = userRepo.findById(user.getId()).orElse(null);
         existingUser.setUserId(user.getUserId());
@@ -42,4 +49,6 @@ public class UserService {
         userRepo.deleteById(id);
         return "User is deleted " + id;
     }
+
+
 }
