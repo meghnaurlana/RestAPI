@@ -16,30 +16,19 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/users")
     public List<User> addUsers(@RequestBody List<User> user) {
         return userService.saveUsers(user);
     }
 
-    @GetMapping("/post")
+    @GetMapping("/getUser")
     public List<User> findUser() {
         return userService.getUser();
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/getUserByID/{id}")
     public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);
-    }
-
-    @GetMapping("/getUserById/{userId}")
-    public List<User> getUserByUserId(@PathVariable int userId) {
-        List<User> user = userService.getUserByUserId(userId);
-        return user;
-    }
-
-    @GetMapping("/getUserByTitle/{title}")
-    public User getUserByTitle(@PathVariable String title) {
-        return userService.getUserByTitle(title);
     }
 
     @PutMapping("/update")
@@ -47,7 +36,7 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/user/{id}")
     public String deleteByID(@PathVariable int id) {
         return userService.deleteUser(id);
     }

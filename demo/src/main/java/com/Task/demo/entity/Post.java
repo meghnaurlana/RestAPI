@@ -9,15 +9,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user_id")
+@Table(name = "post")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Post {
+    @Column(name = "userId")
+    private int userId;
     @Id
     private int id;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "body")
+    private String body;
 
 }
