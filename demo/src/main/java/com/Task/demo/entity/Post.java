@@ -1,12 +1,11 @@
 package com.Task.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "post")
@@ -14,13 +13,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Post {
-    @Column(name = "userId")
-    private int userId;
     @Id
     private int id;
     @Column(name = "title")
     private String title;
     @Column(name = "body")
     private String body;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+//    @OneToMany( cascade = CascadeType.ALL, mappedBy = "post")
+//    private List<Comment> commentList;
+
+
+
+
 
 }

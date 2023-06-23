@@ -5,21 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "username")
+@Table(name = "comment")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Comment {
     @Id
     private int id;
-
     @Column(name = "name")
     private String name;
+    @Column(name="email")
+    private String email;
+    @Column(name = "body")
+    private String body;
 
-//    @OneToMany( cascade = CascadeType.ALL, mappedBy = "user")
-//    private List<Post> postList;
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    private Post post;
 }

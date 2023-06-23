@@ -2,6 +2,7 @@ package com.Task.demo.service;
 
 import com.Task.demo.UserRepo.PostRepository;
 import com.Task.demo.entity.Post;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,6 @@ public class PostService {
 
     public Post updatePost(Post post){
         Post existingUser = postRepository.findById(post.getId()).orElse(null);
-        existingUser.setUserId(post.getUserId());
         existingUser.setId(post.getId());
         existingUser.setTitle(post.getTitle());
         existingUser.setBody(post.getBody());
@@ -42,10 +42,6 @@ public class PostService {
         return "User is deleted " + id;
     }
 
-
-    public List<Post> postDetails(){
-        return postRepository.getPostDetails();
-    }
 
 
 }

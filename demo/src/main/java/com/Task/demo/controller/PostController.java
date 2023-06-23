@@ -42,10 +42,4 @@ public class PostController {
         return postService.deletePost(id);
     }
 
-
-
-    @GetMapping("/post")
-    public  List<Post> getPostDetails(){
-        return postService.postDetails();
-    }
 }
