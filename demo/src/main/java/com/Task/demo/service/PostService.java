@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PostService {
     @Autowired
@@ -28,7 +29,7 @@ public class PostService {
         return postRepository.findById(id).orElse(null);
     }
 
-    public Post updatePost(Post post){
+    public Post updatePost(Post post) {
         Post existingUser = postRepository.findById(post.getId()).orElse(null);
         existingUser.setId(post.getId());
         existingUser.setTitle(post.getTitle());
@@ -41,7 +42,5 @@ public class PostService {
         postRepository.deleteById(id);
         return "User is deleted " + id;
     }
-
-
 
 }

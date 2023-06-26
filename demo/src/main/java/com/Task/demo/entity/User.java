@@ -19,7 +19,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-//    @OneToMany( cascade = CascadeType.ALL, mappedBy = "user")
-//    private List<Post> postList;
+    @OneToMany(targetEntity = Post.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private List<Post> user;
 
 }

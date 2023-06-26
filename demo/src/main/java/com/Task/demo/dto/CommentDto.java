@@ -1,22 +1,18 @@
-package com.Task.demo.entity;
+package com.Task.demo.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Entity
-@Table(name = "comment")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
-    @Id
+@ToString
+public class CommentDto {
+    private int postId;
     private int id;
-    @Column(name = "name")
     private String name;
-    @Column(name="email")
     private String email;
-    @Column(name = "body")
     private String body;
 }

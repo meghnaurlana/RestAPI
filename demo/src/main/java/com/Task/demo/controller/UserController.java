@@ -1,15 +1,26 @@
 package com.Task.demo.controller;
 
+import com.Task.demo.UserRepo.PostRepository;
+import com.Task.demo.UserRepo.UserRepo;
+import com.Task.demo.dto.CommentDto;
+import com.Task.demo.dto.Details;
+import com.Task.demo.entity.Post;
 import com.Task.demo.entity.User;
 import com.Task.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 public class UserController {
     @Autowired
     UserService userService;
+    @Autowired
+    UserRepo userRepo;
+
+    @Autowired
+    PostRepository postRepository;
 
     @PostMapping("/user")
     public User addUser(@RequestBody User user) {
@@ -40,6 +51,27 @@ public class UserController {
     public String deleteByID(@PathVariable int id) {
         return userService.deleteUser(id);
     }
+
+    @GetMapping("/posts")
+    public List<Details> getDetails() {
+        return userRepo.getDetails();
+    }
+
+    @GetMapping("/comments")
+    public List<CommentDto> getCommentDetails() {
+        return postRepository.getCommentDetails();
+    }
+
+    @GetMapping("/post/{id}")
+    public Details getDetailsByID() {
+        return userRepo.getDetailsByID();
+    }
+
+//    @GetMapping("/post/{id}/comments")
+//    public CommentDto getComments() {
+//        return userRepo.getComments();
+//    }
+
 
 }
 

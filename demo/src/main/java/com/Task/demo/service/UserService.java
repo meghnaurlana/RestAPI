@@ -35,11 +35,8 @@ public class UserService {
         return userRepo.save(existingUser);
     }
 
-
     public String deleteUser(int id) {
         userRepo.deleteById(id);
         return "User is deleted " + id;
     }
-
-
 }

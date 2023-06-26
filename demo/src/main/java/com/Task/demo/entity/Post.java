@@ -20,15 +20,7 @@ public class Post {
     @Column(name = "body")
     private String body;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-//    @OneToMany( cascade = CascadeType.ALL, mappedBy = "post")
-//    private List<Comment> commentList;
-
-
-
-
-
+    @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    private List<Comment> post;
 }
