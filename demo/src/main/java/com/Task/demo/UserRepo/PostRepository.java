@@ -12,6 +12,4 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
-    @Query("select new com.Task.demo.dto.CommentDto(p.id, c.id, c.name, c.email, c.body) from Post p JOIN p.post c")
-    public List<CommentDto> getCommentDetails();
 }

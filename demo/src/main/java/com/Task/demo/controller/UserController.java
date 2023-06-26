@@ -4,7 +4,6 @@ import com.Task.demo.UserRepo.PostRepository;
 import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.dto.CommentDto;
 import com.Task.demo.dto.Details;
-import com.Task.demo.entity.Post;
 import com.Task.demo.entity.User;
 import com.Task.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,27 +51,28 @@ public class UserController {
         return userService.deleteUser(id);
     }
 
+
+    // All Post
     @GetMapping("/posts")
     public List<Details> getDetails() {
         return userRepo.getDetails();
     }
 
+    //All comments
     @GetMapping("/comments")
     public List<CommentDto> getCommentDetails() {
-        return postRepository.getCommentDetails();
+        return userRepo.getCommentDetails();
     }
 
+    //get post by id
     @GetMapping("/post/{id}")
-    public Details getDetailsByID() {
-        return userRepo.getDetailsByID();
+    public Details getDetailsByID(@PathVariable int id) {
+        return userRepo.getDetailsByID(id);
     }
 
-//    @GetMapping("/post/{id}/comments")
-//    public CommentDto getComments() {
-//        return userRepo.getComments();
-//    }
-
-
+    //postId  with comment
+    @GetMapping("GetPosts/{id}/Comments")
+    public List<CommentDto> getCommentsInfoById(@PathVariable int id) {
+        return userRepo.getCommentDetails(id);
+    }
 }
-
-

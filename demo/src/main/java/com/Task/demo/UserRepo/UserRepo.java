@@ -5,6 +5,7 @@ import com.Task.demo.dto.Details;
 import com.Task.demo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,9 +16,12 @@ public interface UserRepo extends JpaRepository<User, Integer> {
     @Query("select new com.Task.demo.dto.Details(u.id, p.id, p.title, p.body) from User u JOIN u.user p")
     public List<Details> getDetails();
 
-    @Query("select new com.Task.demo.dto.Details(u.id, p.id, p.title, p.body) from User u JOIN u.user p ON u.id=p.id where p.id=1")
-    public Details getDetailsByID();
+    @Query("select new com.Task.demo.dto.Details(u.id, p.id, p.title, p.body) from User u JOIN u.user p where p.id=:id")
+    public Details getDetailsByID(@Param("id") Integer id);
 
-//    public CommentDto getComments();
+    @Query("select new com.Task.demo.dto.CommentDto(p.id, c.id, c.name, c.email, c.body) from Post p JOIN p.post c where p.id =:id")
+    public List<CommentDto>getCommentDetails(@Param("id") Integer id);
 
+    @Query("select new com.Task.demo.dto.CommentDto(p.id, c.id, c.name, c.email, c.body) from Post p JOIN p.post c")
+    public List<CommentDto> getCommentDetails();
 }
