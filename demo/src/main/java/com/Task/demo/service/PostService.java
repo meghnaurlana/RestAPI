@@ -1,17 +1,19 @@
 package com.Task.demo.service;
 
 import com.Task.demo.UserRepo.PostRepository;
+import com.Task.demo.dto.Details;
 import com.Task.demo.entity.Post;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Service
 public class PostService {
     @Autowired
-    private PostRepository postRepository;
+     PostRepository postRepository;
 
     public Post savePost(Post post) {
         return postRepository.save(post);
@@ -43,4 +45,11 @@ public class PostService {
         return "User is deleted " + id;
     }
 
+
+    public List<Details> getDetails() {
+        return postRepository.getDetails();
+    }
+    public Details getDetailsByID( int id) {
+        return postRepository.getDetailsByID(id);
+    }
 }

@@ -1,7 +1,5 @@
 package com.Task.demo.controller;
 
-import com.Task.demo.UserRepo.PostRepository;
-import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.entity.User;
 import com.Task.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

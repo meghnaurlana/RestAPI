@@ -1,7 +1,9 @@
 package com.Task.demo.controller;
 
+import com.Task.demo.UserRepo.CommentRepository;
 import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.dto.CommentDto;
+import com.Task.demo.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,17 +14,15 @@ import java.util.List;
 public class CommentController {
 
     @Autowired
-    UserRepo userRepo;
+    CommentService commentService;
 
-    //All comments
     @GetMapping("/comments")
     public List<CommentDto> getCommentDetails() {
-        return userRepo.getCommentDetails();
+        return commentService.getCommentDetails();
     }
 
-    //postId  with comment
     @GetMapping("posts/{id}/comments")
     public List<CommentDto> getCommentsInfoById(@PathVariable int id) {
-        return userRepo.getCommentDetails(id);
+        return commentService.getCommentsInfoById(id);
     }
 }
