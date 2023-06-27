@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class UserController {
+public class Controller {
     @Autowired
     UserService userService;
     @Autowired
@@ -71,7 +71,7 @@ public class UserController {
     }
 
     //postId  with comment
-    @GetMapping("GetPosts/{id}/Comments")
+    @GetMapping("posts/{id}/comments")
     public List<CommentDto> getCommentsInfoById(@PathVariable int id) {
         return userRepo.getCommentDetails(id);
     }
