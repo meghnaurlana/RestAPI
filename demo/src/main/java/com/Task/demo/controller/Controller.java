@@ -51,7 +51,6 @@ public class Controller {
         return userService.deleteUser(id);
     }
 
-
     // All Post
     @GetMapping("/posts")
     public List<Details> getDetails() {
