@@ -3,10 +3,8 @@ package com.Task.demo.service;
 import com.Task.demo.UserRepo.PostRepository;
 import com.Task.demo.dto.Details;
 import com.Task.demo.entity.Post;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

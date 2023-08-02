@@ -3,11 +3,12 @@ package com.Task.demo.service;
 import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-@Service
+@Component
 public class UserService {
     @Autowired
     private UserRepo userRepo;
