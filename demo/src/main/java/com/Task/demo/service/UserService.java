@@ -8,10 +8,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Component
+@Service
 public class UserService {
     @Autowired
     private UserRepo userRepo;
+
+    public UserService(UserRepo userRepo) {
+
+    }
 
     public User saveUser(User user) {
         return userRepo.save(user);

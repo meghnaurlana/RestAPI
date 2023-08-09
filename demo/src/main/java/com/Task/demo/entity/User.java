@@ -23,4 +23,6 @@ public class User {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<Post> user;
 
+    public User(int i, String meghana, int i1, String s, String hello) {
+    }
 }

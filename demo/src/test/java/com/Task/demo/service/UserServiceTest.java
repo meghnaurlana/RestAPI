@@ -2,66 +2,44 @@ package com.Task.demo.service;
 
 import com.Task.demo.UserRepo.UserRepo;
 import com.Task.demo.entity.User;
-import jakarta.inject.Inject;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Answers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
+@SpringBootTest
 class UserServiceTest {
-    @Mock
-    private UserRepo userRepo;
+    @MockBean
+    UserRepo userRepo;
     @Autowired
     private UserService userService;
-    @Inject
-    User user;
-    AutoCloseable autoCloseable;
-
-
-    @BeforeEach
-    void setUp() {
-        autoCloseable = MockitoAnnotations.openMocks(this);
-        userService = new UserService(userRepo);
-        user = new User(1, "Harry");
-
-    }
-
-    @AfterEach
-    void tearDown() throws Exception {
-        autoCloseable.close();
-    }
 
     @Test
     void testSaveUser() {
-        mock(User.class);
-        mock(UserRepo.class);
+        User user = new User(1, "meghana", 1, ("new post"), ("hello"));
         when(userRepo.save(user)).thenReturn(user);
-        assertThat(userService.saveUser(user)).isEqualTo("Success");
+        assertThat(userService.saveUser(user)).isEqualTo(user);
     }
 
     @Test
-    void saveUsers() {
+    void getUserTest() {
+        when(userRepo.findAll()).thenReturn(Stream.of(new User(1, "meghana", 1, ("new post"), ("hello")), new User(2, "urlana", 1, ("new post 2"), ("hello 2"))).collect(Collectors.toList()));
+        assertThat(userService.getUser().size());
     }
 
-    @Test
-    void getUser() {
-    }
 
     @Test
-    void getUserById() {
-    }
+    void deleteUserTest() {
+        User user = new User(1, "meghana", 1, ("new post"), ("hello"));
+        doAnswer(Answers.CALLS_REAL_METHODS).when(userRepo).deleteById(any());
+        assertThat(userService.deleteUser(user.getId())).isEqualTo("User is deleted 0");
 
-    @Test
-    void updateUser() {
-    }
-
-    @Test
-    void deleteUser() {
     }
 }
