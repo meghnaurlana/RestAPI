@@ -23,4 +23,13 @@ public class Post {
     @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private List<Comment> post;
+
+    public Post(int id, String title, String body, int postId, String name, String email, String body1) {
+    }
+
+    public Post(int i, String hello, String body) {
+    }
+
+    public Post(int id, String hello, String helloWorld, String post) {
+    }
 }

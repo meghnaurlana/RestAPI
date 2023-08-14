@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class PostService {
     @Autowired
-     PostRepository postRepository;
+    PostRepository postRepository;
 
     public Post savePost(Post post) {
         return postRepository.save(post);
@@ -47,7 +47,8 @@ public class PostService {
     public List<Details> getDetails() {
         return postRepository.getDetails();
     }
-    public Details getDetailsByID( int id) {
+
+    public Details getDetailsByID(int id) {
         return postRepository.getDetailsByID(id);
     }
 }

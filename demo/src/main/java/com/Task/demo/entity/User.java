@@ -25,4 +25,7 @@ public class User {
 
     public User(int i, String meghana, int i1, String s, String hello) {
     }
+
+    public User(int i, String meghana) {
+    }
 }

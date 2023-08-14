@@ -16,16 +16,16 @@ class UserRepoTest {
 
     User user;
 
-    @BeforeEach
-    void setUp() {
-        user = new User(1, "Harry");
-        userRepo.save(user);
-
-    }
-
-    @AfterEach
-    void tearDown() {
-        user = null;
-        userRepo.deleteAll();
-    }
+//    @BeforeEach
+//    void setUp() {
+//        user = new User(1, "Harry");
+//        userRepo.save(user);
+//
+//    }
+//
+//    @AfterEach
+//    void tearDown() {
+//        user = null;
+//        userRepo.deleteAll();
+//    }
 }
